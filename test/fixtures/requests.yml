@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  request_date: 2016-01-28
+  due_date: 2016-01-28
+  method: MyString
+  description: MyString
+  amonunt: 1.5
+  receiver_name: MyString
+  request_type: MyString
+  user_id: 
+
+two:
+  name: MyString
+  request_date: 2016-01-28
+  due_date: 2016-01-28
+  method: MyString
+  description: MyString
+  amonunt: 1.5
+  receiver_name: MyString
+  request_type: MyString
+  user_id: 
