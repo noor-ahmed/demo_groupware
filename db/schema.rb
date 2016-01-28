@@ -11,14 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128053813) do
+ActiveRecord::Schema.define(version: 20160128062612) do
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string   "name"
+    t.date     "due_date"
+    t.integer  "method"
+    t.string   "description"
+    t.float    "amount"
+    t.integer  "request_type"
+    t.integer  "receiver_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "staff_id"
-    t.string   "string"
-    t.string   "role"
+    t.integer  "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
