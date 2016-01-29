@@ -1,0 +1,72 @@
+<%= render "shared/errors", obj:@request %>
+
+<div class="row">
+  <div class="well col-sm-offset-2 col-xs-8">
+    <%= form_for(@request, html: {class:"form-horizontal", role: "form"}) do |request| %>
+      <div class="form-group">
+        <div class="control-label col-sm-3">
+          <%= request.label :name %>
+        </div>
+        <div class="col-sm-8">
+          <%= request.text_field :name, class: "form-control", placeholder: "Enter your name", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-3">
+          <%= request.label :due_date %>
+        </div>
+        <div class="col-sm-8">
+          <%= request.date_field :due_date, class: "form-control", autofocus: true  %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-3">
+          <%= request.label "Payment method" %>
+        </div>
+        <div class="col-sm-8">
+          <%= request.select :method, options_for_select(Request.payment_methods.collect{|r| [r[0].humanize,
+            r[0]]}), {prompt: "Select payment method"}, class:"form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-3">
+          <%= request.label :description %>
+        </div>
+        <div class="col-sm-8">
+          <%= request.text_area :description, rows: 5, class: "form-control",
+            placeholder: "Enter a short description", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-3">
+          <%= request.label :amount %>
+        </div>
+        <div class="col-sm-8">
+          <%= request.text_field :amount, class: "form-control", placeholder: "Enter the amount", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-3">
+          <%= request.label :request_type, class: "control-label" %>
+        </div>
+        <div class="col-sm-8">
+          <%= request.select :request_type, options_for_select(Request.request_types.collect{|r| [r[0].humanize,
+            r[0]]}), {prompt: "Select request type"}, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-3">
+          <%= request.label "Receiver name", class: "control-label" %>
+        </div>
+        <div class="col-sm-8">
+          <%= request.select :receiver_id, options_for_select(@managers.collect{ |u| [u.name, u.id] }),{prompt:"Select the receiver"}, {class: "form-control"} %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-10">
+          <%= request.submit class:"btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
