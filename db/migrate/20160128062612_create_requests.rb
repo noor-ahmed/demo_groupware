@@ -2,13 +2,14 @@ class CreateRequests < ActiveRecord::Migration
   def change
     create_table :requests do |t|
       t.string :name
-      t.date :request_date
       t.date :due_date
-      t.string :method
+      t.integer :method
       t.string :description
-      t.float :amonunt
-      t.string :receiver_name
-      t.string :request_type
+      t.float :amount
+      t.integer :request_type
+      t.integer :receiver_id
+      t.integer :user_id
+
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
